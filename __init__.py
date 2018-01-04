@@ -32,7 +32,7 @@ class MarcelSkill(MycroftSkill):
 
 				# -------------------------------------------------------------------------------
         
-def handle_directions_bathroom_intent(self, message):
+		def handle_directions_bathroom_intent(self, message):
 				GPIO.set("GPIO2","Off")
 				GPIO.set("GPIO3","On")
 				GPIO.set("GPIO4","Off")
