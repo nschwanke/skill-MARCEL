@@ -41,6 +41,11 @@ class MarcelSkill(MycroftSkill):
 				self.register_intent(condiments_intent, self.handle_condiments_intent)
 
 				# -------------------------------------------------------------------------------
+				menu_seafoodplate_intent = IntentBuilder("MenuSeafoodplateIntent"). \
+						require("MenuSeafoodplateKeyword").build()
+				self.register_intent(menu_seafoodplate_intent, self.handle_menu_seafoodplate_intent)
+
+				# -------------------------------------------------------------------------------
         
 		def handle_directions_bathroom_intent(self, message):
 				GPIO.set("GPIO2","Off")
@@ -92,6 +97,28 @@ class MarcelSkill(MycroftSkill):
 				GPIO.set("GPIO4","Off")
 				time.sleep(1)
 				self.speak_dialog("condiments")
+				time.sleep(1) 				
+				GPIO.set("GPIO2","On")
+				GPIO.set("GPIO3","Off")
+
+				try:
+					start = time.time()
+					mycroft.util.wait_while_speaking()
+					end = time.time()
+					if (end - start) < 1:
+						time.sleep(10)
+				except:
+					time.sleep(10)
+
+				GPIO.set("GPIO2","Off")
+				GPIO.set("GPIO4","On")
+				
+		def handle_menu_seafoodplate_intent(self, message):
+				GPIO.set("GPIO2","Off")
+				GPIO.set("GPIO3","On")
+				GPIO.set("GPIO4","Off")
+				time.sleep(1)
+				self.speak_dialog("menu.seafoodplate")
 				time.sleep(1) 				
 				GPIO.set("GPIO2","On")
 				GPIO.set("GPIO3","Off")
