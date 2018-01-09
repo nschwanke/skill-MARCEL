@@ -64,36 +64,33 @@ matrix = RGBMatrix(options = options)
 ##############################################################################################################################
 ## Importing images
 
-sleep1 = Image.open("ROLLESleep1.png")
-sleep2 = Image.open("ROLLESleep2.png")
+sleep1 = Image.open("MARCELSleeping1.png")
+sleep2 = Image.open("MARCELSleeping2.png")
+sleep3 = Image.open("MARCELSleeping3.png")
 
-closedmouth = Image.open("ROLLE.png")
-blink = Image.open("ROLLEEyesClosed.png")
+basic = Image.open("MARCEL.png")
+eyesclosed = Image.open("MARCELEyesClosed.png")
 
-# openmouth = Image.open("ROLLEMouthOpen.png")
-talking1 = Image.open("ROLLETalk1.png")
-talking2 = Image.open("ROLLETalk2.png")
+mouthopen = Image.open("MARCELMouthOpened.png")
 
-thinking1 = Image.open("ROLLEThinking1.png")
-thinking2 = Image.open("ROLLEThinking2.png")
+thinking1 = Image.open("MARCELThinking1.png")
+thinking2 = Image.open("MARCELThinking2.png")
 
-
-happy = Image.open("ROLLEHappy.png")
-sad = Image.open("ROLLESad.png")
-mad = Image.open("ROLLEMad.png")
-
-nationer1 = Image.open("ROLLEVEyes1.png")
-nationer2 = Image.open("ROLLEVEyes2.png")
+## happy = Image.open("MARCELHappy.png")
+## sad = Image.open("MARCELSad.png")
+## mad = Image.open("MARCELMad.png")
+## nationer1 = Image.open("ROLLEVEyes1.png")
+## nationer2 = Image.open("ROLLEVEyes2.png")
 #############################################################################################################################
 ## Setting states as lists
 
 awake = [False, False, False, True]
 thinking = [False, False, True, False]
 talking = [False, False, True, True]
-villanova = [False, True, False, False]
-happyFace = [False, True, False, True]
-sadFace = [False, True, True, False]
-madFace = [False, True, True, True]
+## villanova = [False, True, False, False]
+## happyFace = [False, True, False, True]
+## sadFace = [False, True, True, False]
+## madFace = [False, True, True, True]
 
 
 ##############################################################################################################################
@@ -116,13 +113,13 @@ while (inf == 1):
 	if ((currentState[0] == awake[0]) and (currentState[1] == awake[1]) and (currentState[2] == awake[2]) and (currentState[3] == awake[3])):
 
 		## Do I need to clear once in the beginning?
-		matrix.SetImage(closedmouth.convert('RGB')) 
+		matrix.SetImage(basic.convert('RGB')) 
 
 		time.sleep(3)
 
 		matrix.Clear()
 
-		matrix.SetImage(blink.convert('RGB'))
+		matrix.SetImage(eyesclosed.convert('RGB'))
 
 		time.sleep(.3)
 
@@ -139,11 +136,17 @@ while (inf == 1):
 
 				matrix.SetImage(sleep1.convert('RGB'))
 
-				time.sleep(2)
+				time.sleep(1)
 
 				matrix.Clear()
 
 				matrix.SetImage(sleep2.convert('RGB'))
+
+				time.sleep(1)
+
+				matrix.Clear()
+				
+				matrix.SetImage(sleep3.convert('RGB'))
 
 				time.sleep(1)
 
@@ -172,13 +175,13 @@ while (inf == 1):
 	## Set the talking animation while 0011
 	if ((currentState[0] == talking[0]) and (currentState[1] == talking[1]) and (currentState[2] == talking[2]) and (currentState[3] == talking[3])):
 
-		matrix.SetImage(talking1.convert('RGB'))
+		matrix.SetImage(basic.convert('RGB'))
 
 		time.sleep(.5)
 
 		matrix.Clear()
 
-		matrix.SetImage(talking2.convert('RGB'))
+		matrix.SetImage(mouthopened.convert('RGB'))
 
 		time.sleep(.5)
 
@@ -186,40 +189,40 @@ while (inf == 1):
 
 
 	## Set the Nationer face when 0100
-	if ((currentState[0] == villanova[0]) and (currentState[1] == villanova[1]) and (currentState[2] == villanova[2]) and (currentState[3] == villanova[3])):
+	## if ((currentState[0] == villanova[0]) and (currentState[1] == villanova[1]) and (currentState[2] == villanova[2]) and (currentState[3] == villanova[3])):
 
-		matrix.SetImage(nationer1.convert('RGB'))
+#		matrix.SetImage(nationer1.convert('RGB'))
 
-		time.sleep(1)
+#		time.sleep(1)
 
-		matrix.Clear()
+#		matrix.Clear()
 
-		matrix.SetImage(nationer2.convert('RGB'))
+#		matrix.SetImage(nationer2.convert('RGB'))
 
-		time.sleep(1)
+#		time.sleep(1)
 
-		matrix.Clear()
+#		matrix.Clear()
 
 	## Set the Happy face when 0101
-	if ((currentState[0] == happyFace[0]) and (currentState[1] == happyFace[1]) and (currentState[2] == happyFace[2]) and (currentState[3] == happyFace[3])):
+#	if ((currentState[0] == happyFace[0]) and (currentState[1] == happyFace[1]) and (currentState[2] == happyFace[2]) and (currentState[3] == happyFace[3])):
 
-		matrix.SetImage(happyFace.convert('RGB'))
+#		matrix.SetImage(happyFace.convert('RGB'))
 
-		matrix.Clear()
+#		matrix.Clear()
 
 	## Set the Sad face when 0110
-	if ((currentState[0] == sadFace[0]) and (currentState[1] == sadFace[1]) and (currentState[2] == sadFace[2]) and (currentState[3] == sadFace[3])):
+#	if ((currentState[0] == sadFace[0]) and (currentState[1] == sadFace[1]) and (currentState[2] == sadFace[2]) and (currentState[3] == sadFace[3])):
 
-		matrix.SetImage(sadFace.convert('RGB'))
+#		matrix.SetImage(sadFace.convert('RGB'))
 
-		matrix.Clear()
+#		matrix.Clear()
 
 	## Set the Mad face when 0111
-	if ((currentState[0] == madFace[0]) and (currentState[1] == madFace[1]) and (currentState[2] == madFace[2]) and (currentState[3] == madFace[3])):
+#	if ((currentState[0] == madFace[0]) and (currentState[1] == madFace[1]) and (currentState[2] == madFace[2]) and (currentState[3] == madFace[3])):
 
-		matrix.SetImage(happyFace.convert('RGB'))
+#		matrix.SetImage(happyFace.convert('RGB'))
 
-		matrix.Clear()
+#		matrix.Clear()
 
 
 
